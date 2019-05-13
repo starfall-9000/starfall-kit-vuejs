@@ -1,0 +1,65 @@
+stages:
+  - test
+  - build
+  - develop
+  - deploy
+
+build site:
+  image: node:latest
+  stage: build
+  script:
+    - npm install -g yarn
+    - yarn install --progress=false
+    - yarn build
+  artifacts:
+    expire_in: 1 week
+    paths:
+      - dist
+  only:
+    refs:
+      - master
+      - develop
+      - deploy
+
+unit test:
+  image: node:latest
+  stage: test
+  script:
+    - npm install -g yarn
+    - yarn install --progress=false
+    - yarn lint
+  only:
+    refs:
+      - master
+      - develop
+      - deploy
+
+develop:
+  image: alpine
+  stage: develop
+  before_script:
+    - apk add --no-cache rsync openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - rsync -rav --delete dist/ "$USER_NAME"@"$SERVER_NAME":"$ROOT_DEVELOP_FOLDER"
+  only:
+    refs:
+      - develop
+
+deploy:
+  image: alpine
+  stage: deploy
+  before_script:
+    - apk add --no-cache rsync openssh
+    - mkdir -p ~/.ssh
+    - echo "$SSH_PRIVATE_KEY" >> ~/.ssh/id_rsa
+    - chmod 600 ~/.ssh/id_rsa
+    - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config
+  script:
+    - rsync -rav --delete dist/ "$USER_NAME"@"$SERVER_NAME":"$ROOT_FOLDER"
+  only:
+    refs:
+      - deploy
