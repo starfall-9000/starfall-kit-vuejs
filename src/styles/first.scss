@@ -1,0 +1,366 @@
+html,
+body {
+  // overflow: auto !important;
+  width: 100%;
+  height: 100%;
+  // margin: 0px;
+  margin: auto;
+  font-size: 100px;
+  z-index: 1;
+  font-family: Helvetica, sans-serif;
+  -webkit-overflow-scrolling: touch;
+  background: #f0f0f0;
+  max-width: 500px;
+  position: relative;
+}
+a {
+  text-decoration: none;
+}
+img {
+  max-width: 100%;
+  margin: 0px;
+  vertical-align: bottom;
+}
+button {
+  border: none;
+  background: none;
+  padding: 0px;
+}
+p {
+  -webkit-margin-before: 0;
+  -webkit-margin-after: 0;
+}
+input {
+  shape-outside: none;
+  padding: 0;
+  background: #fff;
+}
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  /* display: none; <- Crashes Chrome on hover */
+  -webkit-appearance: none;
+  margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+input[type='number'] {
+  -moz-appearance: textfield;
+}
+:focus {
+  outline: 0;
+}
+.clearfix:after {
+  content: '.';
+  display: block;
+  height: 0;
+  width: 0;
+  clear: both;
+  visibility: hidden;
+}
+.clearfix {
+  *height: 1%;
+}
+.fl {
+  float: left;
+}
+.fr {
+  float: right;
+}
+/* header */
+.headerDefault {
+  position: relative;
+  text-align: center;
+  height: 0.5rem;
+  border-bottom: 1px solid #ececec;
+  font-size: 0.1rem;
+}
+.headerDefault .back {
+  position: absolute;
+  left: 4.4%;
+  top: 0.13rem;
+}
+.headerDefault .back img {
+  width: 0.24rem;
+}
+.headerDefault .title {
+  font-size: 0.18rem;
+  color: #333;
+  letter-spacing: 0;
+  line-height: 0.5rem;
+}
+/* inputDefault */
+.inputAndLabel,
+.inputDefault {
+  height: 0.56rem;
+  line-height: 0.56rem;
+  font-size: 0.16rem;
+  color: #333;
+  border-bottom: 1px solid #ececec;
+}
+.inputAndLabel .inputLabel {
+  margin-right: 0.1rem;
+  display: inline-block;
+  /*font-family: Roboto-Regular;*/
+}
+.inputAndLabel .inputext,
+.inputDefault .inputext {
+  /*font-family: Roboto-Regular;*/
+  height: 0.54rem;
+  width: 1.8rem;
+  font-size: 0.16rem;
+  border: none;
+}
+.inputDefault .eye {
+  margin-left: 20px;
+  margin-right: 10px;
+}
+.inputDefault .eye img {
+  width: 16px;
+  height: 16px;
+  vertical-align: middle;
+}
+.inputAndLabel .clean img,
+.inputDefault .clean img {
+  width: 15px;
+  height: 15px;
+  vertical-align: middle;
+}
+::-webkit-input-placeholder {
+  /* WebKit browsers */
+  color: #ccc;
+}
+:-moz-placeholder {
+  /* Mozilla Firefox 4 to 18 */
+  color: #ccc;
+}
+::-moz-placeholder {
+  /* Mozilla Firefox 19+ */
+  color: #ccc;
+}
+:-ms-input-placeholder {
+  /* Internet Explorer 10+ */
+  color: #ccc;
+}
+/* pop message */
+#pop,
+#pop2 {
+  position: absolute;
+  top: 0%;
+  left: 11.1%;
+  z-index: 100;
+  width: 77.8%;
+  border-radius: 0.04rem;
+  background: #fafafa;
+  box-shadow: 0 0.12rem 0.12rem 0 rgba(0, 0, 0, 0.22);
+  text-align: center;
+  visibility: hidden;
+}
+#pop .popTips,
+#pop2 .popTips {
+  /*font-family: Roboto-Regular;*/
+  font-size: 0.14rem;
+  color: rgba(0, 0, 0, 0.8);
+  line-height: 0.22rem;
+  padding: 0.24rem 0.26rem 0.19rem 0.26rem;
+}
+#pop .popButton,
+#pop2 .popButton {
+  border-top: 0.01rem solid #ececec;
+}
+#pop a {
+  display: block;
+  width: 49.5%;
+  height: 0.48rem;
+  line-height: 0.48rem;
+  font-size: 0.14rem;
+  color: #266bb7;
+}
+#pop a.line {
+  border-right: 1px solid #ececec;
+}
+#pop2 a {
+  display: block;
+  width: 100%;
+  height: 0.48rem;
+  line-height: 0.48rem;
+  font-size: 0.14rem;
+  color: #266bb7;
+}
+#popBg {
+  background: rgba(0, 0, 0, 0.54);
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 10;
+  visibility: hidden;
+}
+#errorPop {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.8);
+  border-radius: 0.04rem;
+  padding: 0.15rem 0.05rem;
+  font-size: 0.16rem;
+  color: #fff;
+  line-height: 0.16rem;
+  width: 69.4%;
+  left: 15.3%;
+  top: 0%;
+  text-align: center;
+}
+/* button */
+.button {
+  height: 0.48rem;
+  width: 100%;
+  display: block;
+  font-size: 0.16rem;
+  text-align: center;
+  line-height: 0.48rem;
+  border-radius: 0.04rem;
+  color: #06a7e1;
+  &.red {
+    background-color: #d51c29;
+    color: #fff;
+  }
+
+  &.blue {
+    background-color: #06a7e1;
+    color: #fff;
+  }
+}
+.buttonDisabled {
+  opacity: 0.5;
+}
+.orLine {
+  font-size: 0.14rem;
+  color: #ccc;
+  text-align: center;
+}
+.orLine .lineSide {
+  height: 10px;
+  width: 41%;
+  display: inline-block;
+  color: #fff;
+  border-bottom: 1px solid #ececec;
+}
+.orLine .lineWord {
+  width: 18%;
+  display: inline-block;
+}
+.buttonBorder {
+  display: block;
+  border: 1px solid #266bb7;
+  border-radius: 0.04rem;
+  width: 100%;
+  height: 0.48rem;
+  color: #2b6db5;
+  text-align: center;
+  line-height: 0.48rem;
+  font-size: 0.16rem;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  /* Firefox */
+  -webkit-box-sizing: border-box;
+  /* Safari */
+}
+/* helpView */
+.helpview {
+  /*font-family: Roboto-Regular;*/
+  color: #333333;
+}
+.helpview #main {
+  padding: 0rem 0.24rem 0rem 0.25rem;
+  overflow: scroll;
+}
+.helpview #main .smallTitle {
+  /*font-family: Roboto-Medium;*/
+  font-size: 0.16rem;
+  line-height: 0.22rem;
+  margin-bottom: 0.11rem;
+  margin-top: 0.16rem;
+  font-weight: bolder;
+}
+.helpview #main .content {
+  font-size: 0.14rem;
+  line-height: 0.2rem;
+}
+.helpview #main .content p {
+  margin-bottom: 0.2rem;
+}
+.helpview a {
+  text-decoration: underline;
+}
+.helpview img {
+  display: block;
+  margin-bottom: 0.3rem;
+}
+/* help */
+.helpview iframe {
+  border: none;
+}
+.helpview #helpviewContent {
+  padding: 0rem 4.4%;
+  overflow: scroll;
+  width: 91.2%;
+}
+/* media */
+@media screen and (min-width: 300px) and (max-width: 350px) {
+  .inputAndLabel .inputext,
+  .inputDefault .inputext {
+    width: 1.42rem;
+  }
+}
+@media screen and (min-width: 480px) and (max-width: 780px) {
+  html {
+    font-size: 200px;
+  }
+  .inputAndLabel .inputext,
+  .inputDefault .inputext {
+    width: 1.5rem;
+  }
+}
+@media screen and (min-width: 800px) {
+  html {
+    font-size: 300px;
+  }
+}
+.handle {
+  button {
+    margin-top: 0.16rem;
+  }
+}
+.van-toast--default .van-toast__text {
+  text-align: center;
+}
+.van-nav-bar--fixed {
+  position: absolute;
+}
+.van-nav-bar {
+  ~ .container {
+    padding-top: 48px;
+  }
+  .van-nav-bar__left {
+    .van-nav-bar__arrow {
+      color: #919498;
+    }
+  }
+}
+.van-hairline--bottom::after {
+  border-bottom-width: 0px !important;
+}
+.page {
+  height: 100%;
+}
+.container {
+  min-height: 100%;
+  padding-bottom: 68px;
+}
+.copyright {
+  margin-top: -68px;
+  font-size: 12px;
+  text-align: center;
+  color: #ccc;
+  line-height: 16px;
+  padding: 18px 0;
+  b {
+    font-weight: normal;
+  }
+}
