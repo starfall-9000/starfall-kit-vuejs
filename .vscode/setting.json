@@ -1,4 +1,4 @@
 {
-  "prettier.trailingComma": "all",
-  "prettier.semi": true
+  "prettier.trailingComma": "none",
+  "prettier.semi": false
 }
