@@ -4,7 +4,10 @@
   "private": true,
   "scripts": {
     "serve": "vue-cli-service serve",
-    "build": "vue-cli-service build"
+    "build": "vue-cli-service build",
+    "lint": "vue-cli-service lint",
+    "serve-production": "yarn build && http-serve -p 3003 --gzip true ./dist",
+    "ngrok": "ngrok http 8080 -host-header=\"localhost:8080\""
   },
   "dependencies": {
     "@types/crypto-js": "^3.1.43",
