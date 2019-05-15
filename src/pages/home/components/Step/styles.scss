@@ -1,0 +1,49 @@
+.step {
+  background: #f6f7f8;
+  display: flex;
+  flex-direction: row;
+  color: #383b47;
+  font-size: 13px;
+  line-height: 16px;
+  padding: 16px 0px;
+
+  .stepInfo {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+  }
+
+  .stepIndex {
+    width: 6px;
+    height: 6px;
+    border-radius: 3px;
+    background: #d1d8e0;
+  }
+
+  .stepTitle {
+    margin-top: 12px;
+    padding: 0 24px;
+    opacity: 0.5;
+    text-align: center;
+  }
+
+  .stepIndicator {
+    height: 2px;
+    width: 80%;
+    position: absolute;
+    top: 2px;
+    left: 60%;
+    background: #d1d8e0;
+  }
+
+  .stepActive {
+    background: #06a7e1;
+  }
+
+  .stepTextActive {
+    font-weight: 500;
+    opacity: 1;
+  }
+}

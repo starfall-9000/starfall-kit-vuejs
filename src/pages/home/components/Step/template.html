@@ -1,0 +1,20 @@
+<div class="step">
+  <div class="stepInfo">
+    <div :class="{stepIndex: true, stepActive: step >= 0}"></div>
+    <span :class="{stepTitle: true, stepTextActive: step >= 0}"
+      >Xác minh số điện thoại</span
+    >
+    <div :class="{stepIndicator: true, stepActive: step >= 1}"></div>
+  </div>
+  <div class="stepInfo">
+    <div :class="{stepIndex: true, stepActive: step >= 1}"></div>
+    <span :class="{stepTitle: true, stepTextActive: step >= 1}"
+      >Tạo tài khoản</span
+    >
+    <div :class="{stepIndicator: true, stepActive: step >= 2}"></div>
+  </div>
+  <div class="stepInfo">
+    <div :class="{stepIndex: true, stepActive: step >= 2}"></div>
+    <span :class="{stepTitle: true, stepTextActive: step >= 2}">Thực hiện</span>
+  </div>
+</div>

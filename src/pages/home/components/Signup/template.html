@@ -1,0 +1,87 @@
+<div class="page" id="signup">
+  <!-- <van-nav-bar title="Đăng ký khoản vay" left-arrow fixed @click-left="goBack()" /> -->
+  <div class="container">
+    <Step :step="0"></Step>
+    <div class="content">
+      <div class="inputAndLabel" :class="{ inputFocus: mobileFocus }">
+        <span class="inputLabel">{{ this.code }}</span>
+        <input
+          class="inputText"
+          id="mobile"
+          placeholder="Nhập số điện thoại"
+          type="tel"
+          maxlength="9"
+          v-model="userInfo.mobile"
+          v-on:input="mobileChange()"
+          @blur="blurMobile()"
+          @focus="focusMobile()"
+        />
+        <button
+          class="clean fr"
+          v-show="cleanMobileShow"
+          @click="cleanMobileFunc()"
+        >
+          <img src="@/assets/input_delete.png" />
+        </button>
+      </div>
+      <div class="inputDefault clearfix" :class="{ inputFocus: otpFocus }">
+        <div class="inputView">
+          <input
+            class="inputText otpText"
+            id="otpcode"
+            placeholder="Nhập OTP"
+            type="tel"
+            maxlength="6"
+            v-model="userInfo.otpCode"
+            v-on:input="otpcodeChange()"
+            @blur="blurOtpcode()"
+            @focus="focusOtpcode()"
+          />
+        </div>
+        <i
+          class="clean fr"
+          v-show="cleanOtpcodeShow"
+          @click="cleanOtpcodeFunc()"
+          ><img src="@/assets/input_delete.png"
+        /></i>
+        <button
+          class="send fr"
+          v-bind:class="{ buttonDisabled: sendDisabled || !userInfo.mobile }"
+          :disabled="sendDisabled || !userInfo.mobile"
+          @click="resendFunc()"
+          v-html="resendMessage"
+        >
+          <span>Gửi OTP</span>
+        </button>
+      </div>
+    </div>
+    <p class="tips" v-show="oneTimeShow">
+      Mã xác thực đã được gửi đến số điện thoại của bạn và sẽ có hiệu lực trong
+      vòng 5 phút
+    </p>
+    <div class="handle">
+      <button
+        class="button blue"
+        id="signup-btn"
+        v-bind:class="{ buttonDisabled: disabled}"
+        @click="go()"
+        :disabled="disabled"
+      >
+        Tiếp tục
+      </button>
+      <span class="availableAccount">Bạn đã có tài khoản?</span>
+      <button class="button" id="signin" @click="goDownload()">
+        Đăng nhập
+      </button>
+    </div>
+    <div class="m16">
+      <span v-if="codeDisabled" class="invitation-code-text"
+        >Mã giới thiệu: {{ invitationCode }}</span
+      >
+    </div>
+    <Footer></Footer>
+  </div>
+  <div class="loaderView" v-show="isLoading">
+    <div class="loader"></div>
+  </div>
+</div>
